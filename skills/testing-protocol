@@ -1,0 +1,144 @@
+# Testing Protocol
+
+Prerequisite for Sessions 1–7 (Skills Build). Every new skill in this repo
+runs through the same three test layers before it's considered publishable.
+Apply them the same way every session so results are comparable and nothing
+ships on vibes alone.
+
+---
+
+## Policy decision: MCP dependency (set in Session 0)
+
+**Decision:** New skills — starting with grant-writing and ESG/sustainability
+— default to running on Claude alone, with zero required connectors.
+
+**Why:** The six existing content-strategy skills (`seo-technical-audit`,
+`seranking-dataforseo`, etc.) require SE Ranking / DataForSEO because they're
+built for agency/marketing clients who already pay for that tooling. Grant
+writing and ESG skills target small nonprofits, who overwhelmingly do not
+have paid SEO connectors and often don't have any MCP connectors at all.
+Requiring one would make the skill unusable for most of its actual audience.
+
+**How to apply it:**
+- Default `Prerequisites` to "runs on Claude alone" — no `compatibility`
+  frontmatter field, no required connector.
+- A connector (grants.gov API, GovTribe, web search) may appear as an
+  **optional** enhancement only — e.g. pulling a live NOFO from a URL
+  instead of asking the user to paste the text. The skill must produce its
+  full deliverable without it.
+- If a future skill genuinely can't function without a specific connector
+  (this should be rare), flag it explicitly in Session review rather than
+  silently requiring it — that's a deviation from the default, not the
+  default itself.
+- Two of the six existing content-strategy skills (`design-what-if`,
+  `design-brief-enforcer`) already run standalone — this isn't a new pattern
+  for the repo, just the default for the new categories.
+
+This decision governs every Prerequisites section written from Session 1
+onward. Revisit it only if a whole session's worth of skills turns out to
+need the same connector — that's a signal to reconsider, not a one-off
+exception.
+
+---
+
+## Layer 1 — Trigger test
+
+**Question:** Does the skill fire on real user phrasings, without over- or
+under-triggering against adjacent skills in this repo?
+
+**How:**
+1. Use `skill-creator` (`/mnt/skills/examples/skill-creator/SKILL.md`) — it
+   has a built-in eval + description-optimization loop, don't hand-roll one.
+2. Generate ~20 eval queries: 8-10 should-trigger (mix of phrasings —
+   formal/casual, explicit/implicit, a couple of "doesn't name the skill but
+   clearly needs it" cases) and 8-10 should-not-trigger (genuine near-misses
+   — queries that share vocabulary with this skill but actually need a
+   *different* skill in this repo, e.g. a `grant-fit-scorer` query that's
+   really asking for `nofo-decoder`, or a `scope-inventory` query that's
+   really `greenwashing-check`). Obvious non-matches ("write me a poem")
+   don't test anything — skip them.
+3. Review the eval set with a human before running it (skill-creator's
+   built-in step) — bad eval queries produce a bad description.
+4. Run skill-creator's optimization loop
+   (`python -m scripts.run_loop --eval-set ... --skill-path ... --model
+   <the model powering this session> --max-iterations 5`).
+5. Record the resulting trigger rate (train + held-out test) and the
+   `best_description` it converges on. Apply it to the skill's frontmatter.
+
+**Pass bar:** held-out test trigger rate materially better than a coin flip
+on both should-trigger and should-not-trigger sets — skill-creator's report
+makes this legible per-query, so look at *which* queries still fail, not
+just the aggregate number.
+
+## Layer 2 — Dry run on real input
+
+**Question:** Does the skill produce a real, usable deliverable on an
+actual real-world input — not a synthetic toy example?
+
+**How, for the grant-writing trio specifically:**
+1. Pull one real NOFO — from grants.gov or a GovTribe result. Don't
+   construct a fake one; the whole point is to catch what synthetic inputs
+   hide (weird formatting, ambiguous eligibility language, missing fields).
+2. Run the skill on it end to end.
+3. Save the real output to `examples/` in that skill's folder (per
+   `CONTRIBUTING.md`'s example format: scenario description, input, output,
+   result).
+
+**How, for other categories:** same principle — one real input, not a
+constructed one. A `greenwashing-check` needs a real marketing claim from a
+real (anonymized if needed) property; a `board-packet-generator` needs a
+real meeting agenda.
+
+**Pass bar:** if the skill cannot produce a usable real-world output — even
+after handling the input's actual messiness — it is **not ready to
+publish**. This is a hard gate, not a nice-to-have. Don't ship a skill on
+the strength of a synthetic example alone.
+
+## Layer 3 — Cold read
+
+**Question:** Would a fresh Claude with zero conversation context, reading
+only the SKILL.md, produce the intended deliverable?
+
+**How:**
+1. Hand the finished SKILL.md (and nothing else — no chat history, no
+   assumed context about this repo, this org, or the drafting conversation)
+   to a fresh Claude instance.
+2. Give it a realistic task prompt (one of the trigger-test should-trigger
+   queries works well here).
+3. Check: did it produce the right deliverable shape without asking for
+   information that should've been in Prerequisites, and without silently
+   assuming domain knowledge the SKILL.md never stated?
+
+**Pass bar:** the cold-read run's output matches the Output Format section
+without the runner needing outside context. Any gap found here means the
+SKILL.md is relying on assumed knowledge — fix the doc, not the runner.
+
+**Why this layer matters separately from Layer 1:** trigger testing checks
+*whether* the skill fires; cold read checks whether the instructions inside
+it are actually self-contained once it does. A skill can pass Layer 1 and
+still fail Layer 3 if it was written by someone (or some session) that
+already knew things the doc never wrote down.
+
+---
+
+## Per-skill sign-off checklist
+
+Copy this into the session's tracking (Asana subtask, PR description, or
+`examples/README.md`) for each skill before marking it done:
+
+```
+Skill: ___________________
+
+[ ] Layer 1 — Trigger test run via skill-creator, description optimized,
+    held-out test rate: ____%
+[ ] Layer 2 — Dry run on real input completed, output saved to examples/
+[ ] Layer 3 — Cold read completed, output matched Output Format with no
+    outside context needed
+[ ] SKILL.md follows templates/skill-template.md structure
+[ ] README.md present and follows templates/readme-template.md
+[ ] Prerequisites section follows the MCP dependency policy above
+    (Claude-only unless explicitly justified otherwise)
+```
+
+A skill that hasn't checked all six boxes isn't done, regardless of how
+finished the SKILL.md prose reads.
