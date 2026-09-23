@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+- 3 ESG & Sustainability skills published with full SKILL.md + README.md + dry-run example:
+  - materiality-interview
+  - impact-report-ghostwriter
+  - b-corp-gap-reader
+- scope-inventory (Scope 1/2/3 Starter Inventory) ESG skill published with full SKILL.md + README.md + dry-run example
+- greenwashing-check ESG skill published with full SKILL.md + README.md + real-world dry-run example (Keurig K-Cup claims)
+- Category overview README for `skills/esg-sustainability`
+- Green Thread Studio fictional fixture chain demonstrating the materiality → report → B Corp gap handoffs
+- 3 AI Visibility skills published with full SKILL.md + README.md + dry-run example:
+  - can-ai-find-you
+  - llms-txt-schema-starter
+  - answer-page-rebuilder
+- Northwest Repair Directory fictional fixture chain demonstrating the audit → technical → content → retest loop
+- 4 Small-Org Operations skills published with full SKILL.md + README.md + dry-run example:
+  - board-packet-generator
+  - meeting-minutes-compliance
+  - rfp-response
+  - volunteer-onboarding
+- Harbor Light Food Network fictional fixture set shared across the small-org operations dry runs
+
 ## [1.0.0] - 2026-01-01
 
 ### Added

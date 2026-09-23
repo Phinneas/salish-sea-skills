@@ -29,12 +29,12 @@ Framework set for understanding funder requirements, building competitive propos
 | Skill | Purpose |
 |-------|---------|
 | [NOFO Decoder](/skills/grant-writing/nofo-decoder) | Extract requirements from federal grant notices |
-| Grant Fit Scorer | Score grant opportunities (coming soon) |
-| Logic Model Builder | Build causal logic models (coming soon) |
-| Budget Narrative Writer | Draft budget justifications (coming soon) |
-| Letter of Support Kit | Generate letters of support (coming soon) |
-| Post-Award Reporting | Manage reporting requirements (coming soon) |
-| Grant Deadline Scout | Monitor and prioritize funding deadlines (coming soon) |
+| [Grant Fit Scorer](/skills/grant-writing/grant-fit-scorer) | Score grant opportunities |
+| [Logic Model Builder](/skills/grant-writing/logic-model-builder) | Build causal logic models |
+| [Budget Narrative Writer](/skills/grant-writing/budget-narrative-writer) | Draft budget justifications |
+| [Letter of Support Kit](/skills/grant-writing/letter-of-support-kit) | Generate letters of support |
+| [Post-Award Reporting](/skills/grant-writing/post-award-reporting) | Manage reporting requirements |
+| [Grant Deadline Scout](/skills/grant-writing/grant-deadline-scout) | Monitor and prioritize funding deadlines |
 
 **Workflow:** Decoder → Fit Scorer → Logic Model → Budget Narrative → LOS Kit → Post-Award
 
@@ -45,11 +45,11 @@ From baseline audits through greenwashing avoidance to impact reporting.
 
 | Skill | Purpose |
 |-------|---------|
-| [Scope 1/2/3 Starter Inventory](/skills/esg-sustainability/scope-inventory) | Establish carbon baseline (coming soon) |
-| Greenwashing Check | Audit sustainability claims for accuracy (coming soon) |
-| Materiality Interview | Identify material ESG issues (coming soon) |
-| Impact Report Ghostwriter | Draft ESG/impact reports (coming soon) |
-| B Corp Gap Reader | Audit against B Corp standards (coming soon) |
+| [Scope 1/2/3 Starter Inventory](/skills/esg-sustainability/scope-inventory) | Establish carbon baseline |
+| [Greenwashing Check](/skills/esg-sustainability/greenwashing-check) | Audit sustainability claims for accuracy |
+| [Materiality Interview](/skills/esg-sustainability/materiality-interview) | Identify material ESG issues |
+| [Impact Report Ghostwriter](/skills/esg-sustainability/impact-report-ghostwriter) | Draft ESG/impact reports |
+| [B Corp Gap Reader](/skills/esg-sustainability/b-corp-gap-reader) | Audit against B Corp standards |
 
 **Workflow:** Inventory → Materiality Interview → Greenwashing Check → Impact Report
 
@@ -60,9 +60,9 @@ Make your content discoverable by AI search engines (ChatGPT, Claude, Perplexity
 
 | Skill | Purpose |
 |-------|---------|
-| [Can AI Find You?](/skills/ai-visibility/can-ai-find-you) | Audit AI Search visibility (coming soon) |
-| llms.txt + Schema Starter Pack | Set up AI discoverability (coming soon) |
-| Answer Page Rebuilder | Restructure content for AI models (coming soon) |
+| [Can AI Find You?](/skills/ai-visibility/can-ai-find-you) | Audit AI Search visibility |
+| [llms.txt + Schema Starter Pack](/skills/ai-visibility/llms-txt-schema-starter) | Set up AI discoverability |
+| [Answer Page Rebuilder](/skills/ai-visibility/answer-page-rebuilder) | Restructure content for AI models |
 
 **Workflow:** Audit → Configure llms.txt + schema → Rebuild answer pages
 
@@ -73,10 +73,10 @@ Governance, opportunity capture, and people management without specialist hires.
 
 | Skill | Purpose |
 |-------|---------|
-| Board Packet Generator | Create board meeting materials (coming soon) |
-| RFP Response | Structure competitive bid responses (coming soon) |
-| Volunteer Onboarding | Build volunteer workflows (coming soon) |
-| Meeting Minutes to Compliance | Convert notes into compliance records (coming soon) |
+| [Board Packet Generator](/skills/small-org-operations/board-packet-generator) | Create board meeting materials |
+| [RFP Response](/skills/small-org-operations/rfp-response) | Structure competitive bid responses |
+| [Volunteer Onboarding](/skills/small-org-operations/volunteer-onboarding) | Build volunteer workflows |
+| [Meeting Minutes to Compliance](/skills/small-org-operations/meeting-minutes-compliance) | Convert notes into compliance records |
 
 ---
 
